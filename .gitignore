@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+cmake-build-debug/*
+
+.idea/*.*
+.idea/Alym.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+bin/Debug/Alym.pdb
