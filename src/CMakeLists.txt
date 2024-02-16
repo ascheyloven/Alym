@@ -3,7 +3,7 @@ file(GLOB_RECURSE FILE_SOURCES RELATIVE_PATH
         ${CMAKE_CURRENT_SOURCE_DIR}/*.h
 )
 
-add_executable(Main ${FILE_SOURCES} ${SHADERS})
+add_executable(Main ${FILE_SOURCES})
 
 target_compile_features(Main PRIVATE cxx_std_23)
 set_target_properties(Main PROPERTIES CXX_EXTENSIONS off CXX_STANDARD_REQUIRED on)

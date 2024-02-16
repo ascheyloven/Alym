@@ -24,14 +24,15 @@ add_custom_command(
 )
 
 foreach(source IN LISTS SHADERS)
-    get_filename_component(FILENAME ${source} NAME)
+    get_filename_component(FILENAME ${source} LAST_EXT)
+    string(REPLACE "." "" FILE_EXT ${FILENAME})
     add_custom_command(
-            OUTPUT ${SHADER_BINARY_DIR}/${FILENAME}.spv
+            OUTPUT ${SHADER_BINARY_DIR}/${FILE_EXT}.spv
             DEPENDS ${source}
-            COMMAND ${glslc_executable} ${source} -o ${SHADER_BINARY_DIR}/${FILENAME}.spv
-            COMMENT "Compiling to ${SHADER_BINARY_DIR}/${FILENAME}.spv"
+            COMMAND ${glslc_executable} ${source} -o ${SHADER_BINARY_DIR}/${FILE_EXT}.spv
+            COMMENT "Compiling to ${SHADER_BINARY_DIR}/${FILE_EXT}.spv"
     )
-    list(APPEND SPV_SHADERS ${SHADER_BINARY_DIR}/${FILENAME}.spv)
+    list(APPEND SPV_SHADERS ${SHADER_BINARY_DIR}/${FILE_EXT}.spv)
 endforeach()
 
 add_custom_target(shaders ALL DEPENDS ${SPV_SHADERS})

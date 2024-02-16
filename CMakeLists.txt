@@ -5,6 +5,8 @@ project(Alym
         DESCRIPTION "Alym - Vulkan based Game Engine"
         LANGUAGES CXX)
 
+set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR} )
+set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 
 add_definitions(-DUNICODE)
 add_definitions(-D_UNICODE)
