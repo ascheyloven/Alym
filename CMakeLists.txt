@@ -14,4 +14,6 @@ add_definitions(-D_UNICODE)
 add_subdirectory(src)
 add_subdirectory(thirdparty)
 add_subdirectory(shaders)
+add_subdirectory(textures)
+
 target_link_libraries(Main thirdparty)

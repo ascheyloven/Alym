@@ -15,11 +15,13 @@ set_target_properties(Main PROPERTIES CXX_EXTENSIONS off CXX_STANDARD_REQUIRED o
 #    target_compile_options(Main PRIVATE -Wall -Wextra -Wpedantic -isystem)
 #endif ()
 
+# Vulkan
 find_package(Vulkan REQUIRED)
 target_include_directories(Main PRIVATE ${Vulkan_INCLUDE_DIRS})
 target_link_libraries(Main Vulkan::Vulkan)
 
 
+# GLM
 find_package(glm CONFIG REQUIRED)
 if (glm_FOUND)
     message(STATUS "GLM FOUND")
@@ -27,7 +29,7 @@ if (glm_FOUND)
     target_link_libraries(Main ${glm_LIBRARIES} glm::glm)
 endif()
 
-
+# GLFW
 find_package(glfw3 CONFIG REQUIRED)
 target_link_libraries(Main glfw)
 
@@ -37,8 +39,14 @@ if (SDL2_FOUND)
     target_link_libraries(Main SDL2::SDL2)
 endif ()
 
+# ImGui
 find_package(imgui CONFIG REQUIRED)
 if (imgui_FOUND)
     message(STATUS "IMGUI FOUND")
     target_link_libraries(Main imgui::imgui)
 endif ()
+
+
+# Stb
+find_package(Stb REQUIRED)
+target_include_directories(Main PRIVATE ${Stb_INCLUDE_DIR})
